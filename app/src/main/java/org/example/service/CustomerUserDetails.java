@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-public class CustomerUserDetails extends UserInfo implements UserDetails { // Fixed multiple inheritance issue
+public class CustomerUserDetails extends UserInfo implements UserDetails { // Fixed multiple inheritance issues
 
     private String username;
     private String password;
