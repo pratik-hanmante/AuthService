@@ -15,7 +15,7 @@ public class CustomerUserDetails extends UserInfo implements UserDetails { // Fi
 
     private String username;
     private String password;
-    private Collection<? extends GrantedAuthority> authorities; // Fixed missing assignment
+    private Collection<? extends GrantedAuthority> authorities; // Fixed missing assignments
 
     public CustomerUserDetails(UserInfo byUsername) {
         this.username = byUsername.getUsername();
