@@ -2,7 +2,10 @@ package org.example.model;
 
 public class UserInfoDto {
 
-    private String user;
+    private String username;
+    private String lastName;
+    private Long phoneNumber;
+    private String email;
 
-    //dto
+
 }
