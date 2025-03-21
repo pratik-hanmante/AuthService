@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
+
+//method to fetch userinfo
 @Entity
 @Data
 @NoArgsConstructor
