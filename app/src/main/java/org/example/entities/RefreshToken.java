@@ -26,6 +26,7 @@ public class RefreshToken {
 
     private Instant expiryDate;
 
+//getting userinfo
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "user_id")
     private UserInfo userInfo;
