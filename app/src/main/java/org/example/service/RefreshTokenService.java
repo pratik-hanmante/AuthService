@@ -1,38 +1,34 @@
 package org.example.service;
 
-import org.example.entities.RefreshToken;
-import org.example.entities.UserInfo;
-import org.example.repository.RefreshTokenRepository;
-import org.example.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.example.entities.RefreshToken; // Importing the RefreshToken entity
+import org.example.entities.UserInfo; // Importing the UserInfo entity
+import org.example.repository.RefreshTokenRepository; // Importing the RefreshTokenRepository
+import org.example.repository.UserRepository; // Importing the UserRepository
+import org.springframework.beans.factory.annotation.Autowired; // Importing the Autowired annotation
+import org.springframework.stereotype.Service; // Importing the Service annotation
 
-import java.time.Instant;
-import java.util.UUID;
+import java.time.Instant; // Importing the Instant class for time representation
+import java.util.UUID; // Importing the UUID class for unique identifier generation
 
-@Service
+@Service // Indicates that this class is a service component in the Spring context
 public class RefreshTokenService {
 
-    @Autowired RefreshTokenRepository refreshTokenRepository;
+    @Autowired 
+    private RefreshTokenRepository refreshTokenRepository; // Injecting the RefreshTokenRepository dependency
 
-    @Autowired UserRepository userRepository;
+    @Autowired 
+    private UserRepository userRepository; // Injecting the UserRepository dependency
 
+    /**
+     * Creates a new refresh token for the given username.
+     * 
+     * @param userName the username for which to create the refresh token
+     * @return the created RefreshToken object
+     */
     public RefreshToken createRefreshToken(String userName) {
+        // Retrieve the UserInfo object for the given username
         UserInfo userInfoExtracted = userRepository.findByUsername(userName);
+        
+        // Create a new RefreshToken object using the builder pattern
         RefreshToken refreshToken = RefreshToken.builder()
-                .userInfo(userInfoExtracted)
-                .token(UUID.randomUUID().toString())
-                .expiryDate(Instant.now().plusMillis(600000))
-                .build();
-                return refreshTokenRepository.save(refreshToken);
-    }
-
-    public RefreshToken verifyExpiration(RefreshToken token) {
-        if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
-            refreshTokenRepository.delete(token);
-            throw new RuntimeException(token.getToken() + " Refresh token is expired");
-        }
-        return token;
-    }
-
-}
+                .userInfo(userInfoExtracted) // Associate the retrieved UserInfo with the refresh token
