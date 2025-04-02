@@ -26,7 +26,7 @@ public class CustomerUserDetails extends UserInfo implements UserDetails { // Fi
             auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase(Locale.ROOT)));
         }
 
-        this.authorities = auths; // Fixed missing assignment
+        this.authorities = auths; 
     }
 
     @Override
