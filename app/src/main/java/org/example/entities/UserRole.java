@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-// method for specifying users role 
+// function for specifying user's role 
 
 @Entity
 @Data
