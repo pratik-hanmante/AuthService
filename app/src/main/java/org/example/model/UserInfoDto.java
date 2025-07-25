@@ -2,7 +2,7 @@ package org.example.model;
 
 public class UserInfoDto {
 
-//variables
+// variables for user 
     private String username;
     private String lastName;
     private Long phoneNumber;
